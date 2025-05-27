@@ -8,7 +8,7 @@ The goal of the project is to accelerate work related to bug triage. The tool is
 > You need an Azure AI Foundry instance with a model deployed.
 > You need an Azure DevOps instance.
 
-1. Enter ADO `Organization URL`, `project name` and your triage `query id` into the appsettings.json file.
+1. Enter `ado` and `openAiClient` details in the `appsettings.json` file.
 1. Execute `az login` and log in. The tool by default is using Default Azure Credentials, inferring necessary secrets from the context of your environment.
 1. Run the project in Visual Studio.
 

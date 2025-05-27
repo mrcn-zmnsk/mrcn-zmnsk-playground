@@ -30,24 +30,9 @@
         {
             return new List<ChatMessage>
             {
-                 ChatMessage.CreateSystemMessage($@"
-You are an assistant to an engineering team doing a bug triage. 
-You should start by executing triage query and fetch the list of bugs. For each bug in the query result: 
- - fetch bug details
- - summarize it 
- - determine what ERP scenario it is about
- - determine if the bug states a version in which the scenario worked, prior to the version in which the bug is opened
- - determine if the bug speaks about blockage or existing workaround. summarize the workaround if available.
- - determine if the customer wants it backported to a previous release or not. this is the basis for priority assessment.
- - assign priority and severity according to the triage defintions
-
-Sort the results in ascending severity order. Present the results in markdown format. Include a link to ADO for each bug.
-"
-                 ),
-                 ChatMessage.CreateSystemMessage($"Unless specified by the user the triage queryId is {this.configuration["ado:triageQueryId"]}"),
-                 ChatMessage.CreateSystemMessage(@$"
-The triage defintions are below. Bug reports often over-emphasize severity of the issue. Be strict in applying the guidelines and don't take severity suggestions from the bug into consideration: 
-{await LoadTriageDefinition()}"),
+                 ChatMessage.CreateSystemMessage($"{ await LoadMdFile("system-instructions.md") }"),                 
+                 ChatMessage.CreateSystemMessage($"The triage defintions are below: \\n { await LoadMdFile("triage-policy.md") }"),
+                 ChatMessage.CreateSystemMessage($"Unless specified by the user the triage queryId is { this.configuration["ado:triageQueryId"] }"),
             };
         }
 
@@ -103,9 +88,9 @@ The triage defintions are below. Bug reports often over-emphasize severity of th
             return;
         }
 
-        internal async Task<string> LoadTriageDefinition()
+        internal async Task<string> LoadMdFile(string fileName)
         {
-            return await File.ReadAllTextAsync("triage-policy.md");
+            return await File.ReadAllTextAsync(fileName);
         }
     }
 }
