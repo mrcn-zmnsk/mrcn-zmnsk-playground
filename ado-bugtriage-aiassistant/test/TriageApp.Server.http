@@ -1,0 +1,6 @@
+@TriageApp.Server_HostAddress = http://localhost:5264
+
+GET {{TriageApp.Server_HostAddress}}/AdoTriage/
+Accept: application/json
+
+###

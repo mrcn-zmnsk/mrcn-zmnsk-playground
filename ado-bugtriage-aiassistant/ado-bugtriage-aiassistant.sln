@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ado-bugtriage-aiassistant", "ado-bugtriage-aiassistant", "{2A67AA38-6594-1631-B2DE-393B66581B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoTriageAI", "src\AdoTriageAI.csproj", "{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BED8EE35-D370-C173-2E22-D5BF2E5B5B3A} = {2A67AA38-6594-1631-B2DE-393B66581B31}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA0362A3-BD73-47D7-BE1A-2E372603215A}
+	EndGlobalSection
+EndGlobal
