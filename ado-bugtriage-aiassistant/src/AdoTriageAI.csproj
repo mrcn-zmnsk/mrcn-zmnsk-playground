@@ -30,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="appsettings.user" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\css\style.css" />
   </ItemGroup>
 

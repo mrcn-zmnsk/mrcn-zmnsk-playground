@@ -7,9 +7,6 @@
 
     public class AdoTriageAssistant : IAdoTriageAssistant
     {
-        const string model = "gpt-4o-mini";
-        const string endpointUrl = $"https://mplaza-aoai.openai.azure.com";
-
         ChatClient chatClient;
 
         ChatCompletionOptions options;
@@ -24,7 +21,7 @@
             this.configuration = configuration;
             this.logger = logger;
 
-            this.chatClient = new AzureOpenAIClient(new Uri(endpointUrl), new DefaultAzureCredential()).GetChatClient(model);
+            this.chatClient = new AzureOpenAIClient(new Uri(configuration["openAiClient:endpointUrl"]), new DefaultAzureCredential()).GetChatClient(configuration["openAiClient:modelDeployment"]);
             this.options = new ChatCompletionOptions();
             this.options.Tools.AddRange(this.tools.Select(t => t.ChatTool));
         }
