@@ -1,0 +1,5 @@
+smolagents==1.13.0
+duckduckgo_search
+markdownify
+requests
+pytest
