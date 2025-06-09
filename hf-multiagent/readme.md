@@ -39,14 +39,13 @@ SERPAPI_API_KEY=your_serpapi_key_here
 Run the multi-agent script:
 
 ```sh
-cd src
-python multi-agent.py
-```
+python .\multi-agent.py -h
+usage: multi-agent.py [-h] [--prompt PROMPT]
 
-You can modify the prompt in `multi-agent.py`:
+options:
+  -h, --help       show this help message and exit
+  --prompt PROMPT  Prompt for the manager agent
 
-```python
-prompt = 'What is the population of Helsinge, Denmark?'
-response = manager_agent.run(prompt)
-print("Response:", response)
+
+python multi-agent.py --prompt "What is the population of Helsinge, Denmark?"
 ```
