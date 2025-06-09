@@ -7,7 +7,11 @@ A version-controlled, structured repository for mini projects, experiments, and 
 * [About](#about)
 * [Repository Structure](#repository-structure)
 * [Getting Started](#getting-started)
-* [Mini Projects](#mini-projects)
+* Projects
+  - [HF-agent](hf-agent/readme.md)
+  - [HF-multiagent](hf-multiagent/readme.md)
+  - [llama-agentworkflow](llama-agentworkflow/)
+  - [ado-bugtriage-assistant](ado-bugtriage-aiassistant/readme.md)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
