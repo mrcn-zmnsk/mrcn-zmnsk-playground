@@ -8,6 +8,7 @@ A version-controlled, structured repository for mini projects, experiments, and 
 * [Repository Structure](#repository-structure)
 * [Getting Started](#getting-started)
 * Projects
+  - [LangGraph-ragagent](langgraph-ragagent/)
   - [HF-agent](hf-agent/readme.md)
   - [HF-multiagent](hf-multiagent/readme.md)
   - [llama-agentworkflow](llama-agentworkflow/)
