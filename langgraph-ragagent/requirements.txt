@@ -1,0 +1,9 @@
+datasets
+langchain
+langchain[openai]
+langchain_chroma
+langchain_community[retrievers]
+langgraph
+langfuse
+pydantic
+google-search-results
