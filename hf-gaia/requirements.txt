@@ -1,0 +1,12 @@
+langchain
+langchain[openai]
+langgraph
+langfuse
+pydantic
+google-search-results
+markdownify
+wikipedia
+wikipedia-api
+openpyxl
+html5lib
+beautifulsoup4
