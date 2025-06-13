@@ -8,6 +8,7 @@ A version-controlled, structured repository for mini projects, experiments, and 
 * [Repository Structure](#repository-structure)
 * [Getting Started](#getting-started)
 * Projects
+  - [General AI Assistant benchmark Agent](hf-gaia/)
   - [LangGraph-ragagent](langgraph-ragagent/)
   - [HF-agent](hf-agent/readme.md)
   - [HF-multiagent](hf-multiagent/readme.md)

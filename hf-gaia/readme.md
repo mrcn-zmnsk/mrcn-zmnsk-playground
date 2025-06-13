@@ -2,6 +2,12 @@
 
 Agent built from the HF Agent Course, to be evaluated against [General AI Assistants (GAIA)](https://arxiv.org/abs/2311.12983) benchmark L1.
 
+## Current score
+
+- Questions attempted: 20
+- Correct answers: 8
+- Success rate: 40%
+
 ![HF Agent Course Certificate - Marcin Zieminski](../docs/Hugging%20Face%20-%20Agents%20Course%20certificate%20-%20Marcin%20Zieminski.webp | width=300)
 
 ## Features
