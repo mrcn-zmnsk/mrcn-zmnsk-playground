@@ -4,11 +4,12 @@ Agent built from the HF Agent Course, to be evaluated against [General AI Assist
 
 ## Current score
 
-- Questions attempted: 20
+- Total questions: 20
+- Questions attempted: 16  (unattempted: 2x video analytics, 2x research papers)
 - Correct answers: 8
-- Success rate: 40%
+- Success rate: 40% ([HF Agent Course](https://huggingface.co/learn/agents-course) certification from 30+%)
 
-![HF Agent Course Certificate - Marcin Zieminski](../docs/Hugging%20Face%20-%20Agents%20Course%20certificate%20-%20Marcin%20Zieminski.webp | width=300)
+<img src='../docs/Hugging%20Face%20-%20Agents%20Course%20certificate%20-%20Marcin%20Zieminski.webp' alt='HF Agent Course Certificate - Marcin Zieminski' width='400' />
 
 ## Features
 
