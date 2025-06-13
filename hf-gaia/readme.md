@@ -54,5 +54,12 @@ The app is ongoingly updating `.data/answers.json` so that you can work with que
 Update the `src/app.py` to make a submission.
 
 ```sh
-python src/gaia_agent.py --task_id "8e867cd7-cff9-4e6c-867a-ff5ddc2550be"
+usage: app.py [-h] [--task_id TASK_ID] [--submit]
+
+Run the agent.
+
+options:
+  -h, --help         show this help message and exit
+  --task_id TASK_ID  the task id of the question to answer
+  --submit           submit to API
 ```
