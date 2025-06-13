@@ -11,6 +11,7 @@ from webbrowser_tool import WebBrowserTool
 from wikipediasearch_tool import WikipediaSearchTool, WikipediaPageTool
 from audiotranscribe_tool import AudioTranscribeTool
 from excel_tool import ExcelTool
+from yt_transcript_tool import YTTranscriptTool
 
 
 def get_image_base64(file_name):
@@ -27,7 +28,8 @@ def build_agent_graph():
         WikipediaPageTool(),
         AudioTranscribeTool(),
         PythonExecutor(),
-        ExcelTool()
+        ExcelTool(),
+        YTTranscriptTool()
     ]
     
     # LLM
