@@ -49,23 +49,28 @@ If you are asked for a comma separated list, apply the above rules depending of 
 
 # Unsolved questions:
 # science papers / browser: 840bfca7-4f7b-481a-8794-c560c340185d, bda648d7-d618-4883-88f4-3466eabd860e
-# video processing: 
+# video processing: a1e91b78-d3d8-4675-bb8d-62741b4b68a6
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the agent.")
     parser.add_argument(
         "--task_id",
         type=str,
-        default="cf106601-ab4f-4af9-b045-5295fe67b37d",
-        help="Prompt for the agent"
+        help="the task id of the question to answer"
+    )
+    parser.add_argument(
+        "--submit",
+        action='store_true',
+        help="submit to API"
     )
     args = parser.parse_args()
 
-    q = hf_facade.get_question(args.task_id)  
-    answer = answer_question(q)
-    update_answer = hf_facade.update_answer(args.task_id, answer)
-    print(f"\n\n{'=' *10} FINAL ANSWER = {answer} {'=' *10}")
+    if args.task_id:
+        q = hf_facade.get_question(args.task_id)  
+        answer = answer_question(q)
+        update_answer = hf_facade.update_answer(args.task_id, answer)
+        print(f"\n\n{'=' *10} FINAL ANSWER = {answer} {'=' *10}")
     
-
-#hf_facade.submit_answers()
+    if args.submit:
+        hf_facade.submit_answers()
 
