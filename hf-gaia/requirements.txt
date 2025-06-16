@@ -3,6 +3,7 @@ langchain[openai]
 langgraph
 langfuse
 pydantic
+langchain-google-community
 google-search-results
 markdownify
 wikipedia
@@ -10,3 +11,5 @@ wikipedia-api
 openpyxl
 html5lib
 beautifulsoup4
+yt-dlp
+opencv-python

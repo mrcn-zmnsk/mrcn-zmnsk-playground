@@ -8,11 +8,11 @@ Agent built from the HF Agent Course, to be evaluated against [General AI Assist
 Submission result:
 {
     "username": "marcinzi",
-    "score": 45.0,
-    "correct_count": 9,
-    "total_attempted": 17,
-    "message": "Score calculated successfully: 9/20 total questions answered correctly (17 valid tasks attempted). High score updated on leaderboard.",
-    "timestamp": "2025-06-13T13:26:42.739334+00:00"
+    "score": 70.0,
+    "correct_count": 14,
+    "total_attempted": 18,
+    "message": "Score calculated successfully: 14/20 total questions answered correctly (18 valid tasks attempted). High score updated on leaderboard.",
+    "timestamp": "2025-06-16T09:39:29.321258+00:00"
 }
 ```
 
