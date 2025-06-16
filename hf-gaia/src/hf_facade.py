@@ -2,13 +2,18 @@ import requests, os, json
 
 DEFAULT_API_URL = "https://agents-course-unit4-scoring.hf.space"
 
+template_submission_json = {
+    "username": "marcinzi", 
+    "agent_code": "https://huggingface.co/spaces/marcinzi/Final_Assignment_marcinzi/tree/main",
+    "answers": []
+}
+
 os.makedirs('./data', exist_ok=True)
+questions_file = './data/questions.json'
 
 def get_questions():
     """Fetch questions from the API."""
     
-    questions_file = './data/questions.json'
-
     if os.path.exists(questions_file):
         print(f'Fetching questions from file {questions_file} ...')
         with open(questions_file, 'r') as f:
@@ -75,42 +80,49 @@ def print_question(q):
     print(f'Question: {q["question"]}')
 
 
-
-def update_answer(task_id, answer):
-
-    answers_file = './data/answers.json'
+def evaluate_answer(task_id, answer):
     data = {
         "task_id": task_id,
-        "submitted_answer": answer
+        "submitted_answer": answer,
     }
     
-    if os.path.exists(answers_file):
-        with open(answers_file, 'r') as f:
-            submission_json = json.load(f)
-    else:
-        submission_json = {
-            "username": "marcinzi", 
-            #"agent_code": agent_code, 
-            "answers": []
-        }
+    response = submit_answers([data])
 
-    filtered = [a for a in submission_json['answers'] if a['task_id'] != task_id]
-    filtered.append(data)
-    submission_json['answers'] = filtered
+    return response['correct_count'] > 0
+
+def evaluate_all_answers():
+    with open(questions_file, 'r') as f:
+        questions_json = json.load(f)
+
+    data = [
+        { 
+            "task_id": a['task_id'], 
+            'submitted_answer': a['answer']
+        } for a in questions_json if 'answer' in a
+    ]
     
-    with open(answers_file, 'w') as f:
-        json.dump(submission_json, f, indent=4) 
+    return submit_answers(data)
 
-    return submission_json
 
-def submit_answers():
+def update_question(question):
+    with open(questions_file, 'r') as f:
+        questions_json = json.load(f)
+
+    index = next((i for i, q in enumerate(questions_json) if q['task_id'] == question['task_id']), None)
+    if index != None:
+        questions_json[index] = question
+        
+    with open(questions_file, 'w') as f:
+        json.dump(questions_json, f, indent=4) 
+
+
+def submit_answers(answers):
     submit_url = f"{DEFAULT_API_URL}/submit"
-    answers_file = './data/answers.json'
-    
-    with open(answers_file, 'r') as f:
-        submission_json = json.load(f)
 
-    response = requests.post(submit_url, json=submission_json, timeout=15)
+    submission_json = template_submission_json.copy()    
+    submission_json['answers'] = answers
+
+    response = requests.post(submit_url, json=submission_json, timeout=60)
     response.raise_for_status()
     
     result = response.json()

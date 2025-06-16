@@ -1,7 +1,7 @@
 from typing import Type
 from langchain.tools import BaseTool
 from pydantic import Field, BaseModel
-from langchain_community.utilities import SerpAPIWrapper
+from langchain_google_community import GoogleSearchAPIWrapper
 import dotenv
 
 class WebSearchToolInput(BaseModel):
@@ -14,11 +14,9 @@ class WebSearchTool(BaseTool):
     args_schema: Type[BaseModel] = WebSearchToolInput
     
     dotenv.load_dotenv()
-    serpSearch: SerpAPIWrapper = SerpAPIWrapper()
+    searchApi: GoogleSearchAPIWrapper = GoogleSearchAPIWrapper()
 
     def _run(self, query: str) -> str:
-        answer =  self.serpSearch.run(query)
+        answer =  self.searchApi.run(query)
         return answer
         
-
-

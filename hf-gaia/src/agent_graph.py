@@ -12,7 +12,7 @@ from wikipediasearch_tool import WikipediaSearchTool, WikipediaPageTool
 from audiotranscribe_tool import AudioTranscribeTool
 from excel_tool import ExcelTool
 from yt_transcript_tool import YTTranscriptTool
-
+from yt_videoanalytics_tool import YTKeyFrameExtractTool
 
 def get_image_base64(file_name):
     import base64
@@ -29,7 +29,8 @@ def build_agent_graph():
         AudioTranscribeTool(),
         PythonExecutor(),
         ExcelTool(),
-        YTTranscriptTool()
+        YTTranscriptTool(),
+        YTKeyFrameExtractTool()
     ]
     
     # LLM
@@ -45,21 +46,24 @@ def build_agent_graph():
     ## Assistant node
     def improve_prompt(state: AgentState):
         user_prompt = state["messages"][-1]
-        new_prompt = chat_with_tools.invoke([
+        improved_prompt_text = chat_with_tools.invoke([
             HumanMessage(content=f"Improve the prompt for clarity and effectiveness. Return only the new prompt. Original prompt: {user_prompt.content}")
         ]).content
 
-        user_prompt.content = new_prompt
+        new_prompt = HumanMessage(content=[{
+            "type": "text",
+             "text": improved_prompt_text.replace('Strawberry pie.mp3', state['file_name']).replace('Homework.mp3', state['file_name'])
+        }])
+
+        state["messages"][-1] = new_prompt
 
         if state['file_name']:
-            user_prompt.content = user_prompt.content.replace('Strawberry pie.mp3', state['file_name']).replace('Homework.mp3', state['file_name'])
-
             extension = state['file_name'].split('.')[-1]
 
             match extension:
                 case 'png':
                     image_base64 = get_image_base64(state['file_name'])
-                    user_prompt.content.append(
+                    new_prompt.content.append(
                         {
                             "type": "image_url",
                             "image_url": {
