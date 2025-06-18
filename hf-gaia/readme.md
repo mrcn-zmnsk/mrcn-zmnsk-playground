@@ -1,8 +1,12 @@
 # hf-gaia
 
-Agent built from the HF Agent Course, to be evaluated against [General AI Assistants (GAIA)](https://arxiv.org/abs/2311.12983) benchmark L1.
+Agent built from the [HF AI Agents Course](https://huggingface.co/learn/agents-course/en/unit0/introduction), to be evaluated against [General AI Assistants (GAIA)](https://arxiv.org/abs/2311.12983) benchmark.
 
-## Current score
+## GAIA and current score
+
+> GAIA proposes real-world questions that require a set of fundamental abilities such as reasoning, multi-modality handling, web browsing, and generally tool-use proficiency. GAIA questions are conceptually simple for humans yet challenging for most advanced AIs: we show that human respondents obtain 92\% vs. 15\% for GPT-4 equipped with plugins.
+
+The score below is only for Level-1 questions, that are in scope of the course. The questions focus on multi-modality (text, image, audio, video, excel), all kinds of web searches and other tool use, and reasoning.
 
 ```sh
 Submission result:
@@ -16,17 +20,18 @@ Submission result:
 }
 ```
 
-> [HF Agent Course](https://huggingface.co/learn/agents-course) certifies from 30%
+## Approach
 
-<img src='../docs/Hugging%20Face%20-%20Agents%20Course%20certificate%20-%20Marcin%20Zieminski.webp' alt='HF Agent Course Certificate - Marcin Zieminski' width='400' />
-
-## Features
+The approach to the task was testing limits of a single-agent with rich toolkit. 
 
 - **OpenAI 4o** model
 - **LangGraph** for control
 - **Prompt optimization step**
-- **Multi-modal** works with images, audio, excel (video coming)
-- **Custom tools**: Wikipedia (spent too much time here, parsing page contents and scraping tables)
+- **Custom tools**:
+  - Wikipedia tool which is searching articles and returning titles with section names. The tool then offers to fetch the requested article sections together with tables content. This controls for pitfalls with wikipedia - large token inputs, lack of tables on non-html API.
+  - Excel tool for converting spreadsheets into Pandas dataframes
+  - YouTube tool for accessing audio transcriptions, and downolading and breaking videos into key-frames images
+  - Google Search and page visit tools
 
 ## Usage
 
@@ -35,31 +40,42 @@ Submission result:
 pip install -r requirements.txt
 ```
 
-## Configure environment variables
+You'll need Google Search for developers (100 queries per day are for free),
+and a LangFuse account for observability (free hobby tier)
+
+### Configure environment variables
 Create a `.env` file in the project root:
 ```
 OPENAI_API_KEY =
-SERPAPI_API_KEY = 
+
+GOOGLE_API_KEY = 
 
 LANGFUSE_SECRET_KEY= 
 LANGFUSE_PUBLIC_KEY= 
 LANGFUSE_HOST= "https://cloud.langfuse.com"
 ```
 
-## Run
+### Run
 
 The app is downloading `.data/questions.json` and attachment files locally for faster devloop.
-The app is ongoingly updating `.data/answers.json` so that you can work with questions 1 by 1.
+The app is ongoingly updating the questions file with additional attributes: `answer` (tracks agents responses), `correct` (tracks whether the answer was accepted as positive).
 
 Update the `src/app.py` to make a submission.
 
 ```sh
-usage: app.py [-h] [--task_id TASK_ID] [--submit]
-
+usage: app.py [-h] (--task_id TASK_ID | --all | --submit) [--evaluate]                                                                              
 Run the agent.
 
 options:
   -h, --help         show this help message and exit
   --task_id TASK_ID  the task id of the question to answer
-  --submit           submit to API
+  --all              all questions
+  --submit           submit answers file to responses API
+  --evaluate         submit answer to responses API per 1 question and evaluate if answer is correct
 ```
+
+## Certificate
+
+> [HF Agent Course](https://huggingface.co/learn/agents-course) certifies from 30%
+
+<img src='../docs/Hugging%20Face%20-%20Agents%20Course%20certificate%20-%20Marcin%20Zieminski.webp' alt='HF Agent Course Certificate - Marcin Zieminski' width='300' />
