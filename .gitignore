@@ -3,6 +3,12 @@
 **/data/** 
 **/chroma_db/**
 
+fastai-course/**/*.png
+fastai-course/**/*.jpg
+fastai-course/**/*.jpeg
+fastai-course/**/*.gif
+fastai-course/**/*.webp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
