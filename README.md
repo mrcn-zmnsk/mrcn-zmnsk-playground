@@ -14,6 +14,7 @@ A version-controlled, structured repository for mini projects, experiments, and 
   - [HF-multiagent](hf-multiagent/readme.md)
   - [llama-agentworkflow](llama-agentworkflow/)
   - [ado-bugtriage-assistant](ado-bugtriage-aiassistant/readme.md)
+* [FastAI ML course for developers](fastai-course/readme.md)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -44,8 +45,6 @@ This repository is a personal playground for building small-scale projects, expe
 ```
 
 * **project-*/*:** Each mini project lives in its own directory with its own README and structure.
-* **notebooks/**: Exploratory analyses and interactive tutorials.
-* **scripts/**: Common utility scripts used across multiple projects.
 * **docs/**: Diagrams, markdown notes, and reference material.
 
 ## Getting Started
