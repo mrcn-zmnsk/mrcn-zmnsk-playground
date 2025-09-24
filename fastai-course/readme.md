@@ -4,6 +4,13 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
+### 1.3 Neural Networks from Scratch - Stochastic Gradient Descent
+[Jupyter](1.3/SGD.ipynb)
+
+1. Went through building a linear model from scratch, using pure PyTorch tensors and operations. The model was fitting a quadratic function on generated data.
+1. Built a 95% accurate model differentiating between 3s and 7s from MNIST dataset.
+1. Coded raw PyTorch, then wrapped in fastai Learners, one with Linear model, one with simple neural network (1 hidden layer of 30 neurons with ReLU).
+
 ### 1.2 Deploying
 [Jupyter](1.2/dogs_cats.ipynb)
 
