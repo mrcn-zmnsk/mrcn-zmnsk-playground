@@ -11,6 +11,8 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 1. Built a 95% accurate model differentiating between 3s and 7s from MNIST dataset.
 1. Coded raw PyTorch, then wrapped in fastai Learners, one with Linear model, one with simple neural network (1 hidden layer of 30 neurons with ReLU).
 
+![Quadratic function during fitting](../docs/fastai-course/1.3.png)
+
 ### 1.2 Deploying
 [Jupyter](1.2/dogs_cats.ipynb)
 
