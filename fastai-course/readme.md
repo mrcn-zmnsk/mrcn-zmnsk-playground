@@ -4,6 +4,50 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
+### 1.5 Advancing linear to Neural Net, to deep Neural Net
+[Jupyter](1.5/titanic.ipynb)
+
+#### Data preparation and feature engineering
+
+1. Download Titanic dataset from kaggle competition
+1. Load dataframe and analyze with `isNa()`, `describe()`, `info()`
+1. isNa analysis: replacing Nas with `mode()` -> data interpolation
+1. Long-tailed `Fare` attribute analysis with `hist()` -> `logp1` to reduce distribution
+1. Categorical attributes (e.g. boarded in) are exploded to binary variables using `get_dummies()`
+1. Project only resulting columns, force as float, and normalize by dividing with max value per column
+
+Results is a pytorch rank-2 tensor representing the input data.
+
+#### Preparing 3 models: linear, NN and Deep-NN
+
+The model can be thought of as an interface implementation of:
+ - init_coefficients()  -> returns grad-enabled represntation of model variables
+ - calc_predictions(coefficients, training input)  -> applies coefficients on training input, producing an **actual** result
+ - calc_loss(coefficients, training input, expected results) -> calculates predictions and measures distance to **expected** result. We're using MAE (mean abs error)
+ - update_coefficients(coefficients, learning_rate)  ->  apply gradients on coefficients in propotion to LR
+ - (optional) show_coefficients -> in linear we can still track what's going on, later it's getting tough
+
+##### Linear
+Linear model implements the above as producing a vector of coeffs, and simply multiplies the input data through it. It wraps the result in Sigmoid - clamps output between (0, 1).
+
+![Linear](../docs/fastai-course/1.5%20linear.png)
+
+##### NN
+NN-model adds in a layer in between input coefficients and output. There are 2 matrix multiplications. First is wrapped in ReLU (zero the negative values), second wrapped in Sigmoid
+
+![Linear](../docs/fastai-course/1.5%20NN.png)
+
+##### Deep-NN
+Deep-NN-model has 2 layers in between. All but last layer is ReLU-ed, last layer is Sigmoid-ed.
+
+![Linear](../docs/fastai-course/1.5%20Deep%20NN.png)
+
+#### Take-aways
+
+- There are inconsistencies in course material that led me to 2 fails in training models. **Make sure to zero the gradients**, and **normalize the numeric data, removing bias from data**.
+- In this tabular data problem, the Deep NN achieved the best fit, the linear was a close 2nd, and I had the most challenges fiddling with the single-layer NN.
+- With some fiddling of parameters of this vanilla model I achieved loss of 0.19, and accuracy of 83%. Kaggle submission had 77% accuracy, placing me on the 27th percentile of the competition.
+
 ### 1.3 Neural Networks from Scratch - Stochastic Gradient Descent
 [Jupyter](1.3/SGD.ipynb)
 

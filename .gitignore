@@ -1,4 +1,5 @@
 .env
+sketchpad/**
 
 **/data/** 
 **/chroma_db/**
@@ -8,6 +9,7 @@ fastai-course/**/*.jpg
 fastai-course/**/*.jpeg
 fastai-course/**/*.gif
 fastai-course/**/*.webp
+fastai-course/**/*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
