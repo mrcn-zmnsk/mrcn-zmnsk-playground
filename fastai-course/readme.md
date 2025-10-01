@@ -4,6 +4,20 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
+### 1.6 Decision Trees and Random Forests
+[Jupyter](1.6/trees.ipynb)
+
+1. Practicing fundamentals of Decision Trees - OneR classifier
+1. Building Trees and Forrests - trivial with sklearn
+
+Take-aways:
+- Neat built-in feature for `feature importanc`e to reduce the feature space in analysis
+- Random Forests are hard to mess up, cheap to train, and eat training data before cleaning. Great start to analysis of tabular data.
+
+![Small decision tree](../docs/fastai-course/1.6%20Small%20decision%20tree.png)
+
+![Small decision tree](../docs/fastai-course/1.6%20Feature%20importance%20in%20Random%20Forest.png)
+
 ### 1.5 Advancing linear to Neural Net, to deep Neural Net
 [Jupyter](1.5/titanic.ipynb)
 
