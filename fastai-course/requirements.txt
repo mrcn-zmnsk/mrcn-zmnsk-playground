@@ -1,0 +1,11 @@
+seaborn 
+scikit-learn
+kaggle
+fastai
+torch
+torchvision
+zipfile36
+pandas
+matplotlib
+numpy
+graphviz
