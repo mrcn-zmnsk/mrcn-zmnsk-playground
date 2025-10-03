@@ -27,6 +27,7 @@ Take-aways:
 - Test-Time Augmentation (TTA) for higher inference cost
     - Small distortions to test set and average the results 
     - Bagging/Ensembling models
+- Scaling up to larger models trades for time or money. My RTX 3000 laptop takes ~1h to train 10 epochs of a larger model, while server-grade GPUs are 10-100-1000x faster. I've used managed `L40s` GPUs  from Lightning.AI to have tolerable learning loops.
  
 
 
