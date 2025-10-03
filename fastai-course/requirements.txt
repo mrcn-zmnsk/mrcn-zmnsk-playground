@@ -1,11 +1,11 @@
-seaborn 
-scikit-learn
+kagglehub
 kaggle
 fastai
-torch
-torchvision
+timm == 0.6.13
 zipfile36
 pandas
-matplotlib
 numpy
 graphviz
+matplotlib
+seaborn 
+scikit-learn
