@@ -16,7 +16,8 @@ Based on a 3-part series :
  - [Part 2 - fast, iterative approach to imprving image trainer](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2/)
  - [Part 3 - scaling up the best setup](https://www.kaggle.com/code/jhoward/finishing-off-road-to-the-top-part-3)
 
-My best score was 98.156 on convnext.large model.
+The score is 98.346% on convnext.large model, ~15th percentile.
+
 
 Take-aways:
  - Magic knowledge: know good vision models. [The best vision models for fine-tuning](https://www.kaggle.com/code/jhoward/the-best-vision-models-for-fine-tuning)
@@ -30,7 +31,7 @@ Take-aways:
 - Scaling up to larger models trades for time or money. My RTX 3000 laptop takes ~1h to train 10 epochs of a larger model, while server-grade GPUs are 10-100-1000x faster. I've used managed `L40s` GPUs  from Lightning.AI to have tolerable learning loops.
 - High cost of the last 1% of improvement.
  
-![GPU access on LightningAI](../docs/fastai-course/1.6%20LightningAI%20L40s.png)
+![GPU access on LightningAI](../docs/fastai-course/1.6%20LightningAI.png)
 
 #### Decision Trees
 [Jupyter](1.6/trees.ipynb)
