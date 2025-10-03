@@ -4,7 +4,33 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
-### 1.6 Decision Trees and Random Forests
+### 1.6 Decision Trees & Paddy Comp (rice disease)
+
+
+#### Paddy Competition
+[Paddy Doctor: Paddy Disease Classification](https://www.kaggle.com/competitions/paddy-disease-classification/overview)
+[Jupyter](1.6/road-to-the-top.ipynb)
+
+Based on a 3-part series :
+ - [Part 1 - basic comp setup with image trainer](https://www.kaggle.com/code/jhoward/first-steps-road-to-the-top-part-1)
+ - [Part 2 - fast, iterative approach to imprving image trainer](https://www.kaggle.com/code/jhoward/small-models-road-to-the-top-part-2/)
+ - [Part 3 - scaling up the best setup](https://www.kaggle.com/code/jhoward/finishing-off-road-to-the-top-part-3)
+
+My best score was 98.156 on convnext.large model.
+
+Take-aways:
+ - Magic knowledge: know good vision models. [The best vision models for fine-tuning](https://www.kaggle.com/code/jhoward/the-best-vision-models-for-fine-tuning)
+ - FastAI library encapsulates tooling for fiddling the input test data to push model to better training. Key knobs:
+   - Resizing input images with cropping strategies
+   - Further down-sizing the images in micro-batches with random cropping, distortion, lighting changes, flips, zooms
+   - Memory savings with Gradient Accumulation
+- Test-Time Augmentation (TTA) for higher inference cost
+    - Small distortions to test set and average the results 
+    - Bagging/Ensembling models
+ 
+
+
+#### Decision Trees
 [Jupyter](1.6/trees.ipynb)
 
 1. Practicing fundamentals of Decision Trees - OneR classifier
