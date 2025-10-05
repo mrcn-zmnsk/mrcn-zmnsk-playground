@@ -4,8 +4,42 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
-### 1.6 Decision Trees & Paddy Comp (rice disease)
+### 1.8 Convoluted NN
+[Jupyter](1.8/convolutions.ipynb)
+MNIST dataset and digits recognition.
 
+The idea of a `convolution` is transforming input image with a small kernel matrix (e.g. 3x3). The kernel matrix is often constrained, e.g. requiring some 0s, or tying values. The network will be learning parameters of the convolution. Simple kernels can be good at detecting edges, gradients, corners etc.
+
+The NN architecture is a series of connected convolutions.
+The design used reductive convolutions (stride=2), producing a quarter of the picture in the output, and to compensate for information reduction over layers (fewer multiplications) we are doubling channels per layer.
+
+In attempt to scale this model up to full 10 digits, the learning blew up (diverged), showing practical instabilities of NN training related to adapting layers continuously confusing subsequent layers.
+Used the FastAI callbacks collecting statistics from training (near-zero activations, color-histogram).
+
+The problem is addressed with `batchnorm` (Batch Normalization) - which is centering the mean to 0, and dividing to achieve var 1, per batch.
+This stabilizes learning and permits higher LR, and random starting parameters. Resulting in a "healthy" histogram of smoothly increasing non-zero activations.
+
+![Activation histogram from healthy training](../docs/fastai-course/1.8%20activation%20histogram.png)
+
+### 1.7 Collaborative filtering
+[Jupyter](1.7/collaborative_filtering.ipynb)
+
+- Prepared the MovieLense dataset (reviews), in small 100k version
+- Built user and movie embeddings - conceptually table lookups, mathematically a one-hot-vectors, technically implemented as table lookups with a trick for correct gradient calculation. 
+
+#### DotProduct 
+- DotProductModel = (UserEmb * MovieEmb).sum(), MSE (embeddings must match on vector size)
+- Intuitive bias parameter interpretation
+- PCA (Principal Component Analysis) method, to reduce high-dimensional matrix of parameters into 2D or 3D matrix (collapsing dimensions while preserving information) giving human opportunity to see and interpret results.
+- Bootstraping problem and biased representation problem
+- Weight-decay technique - friction in gradient for smoother training.
+
+#### Embeddings with NeuralNetwork
+- Instead of dot-product on factors, we can just chuck embeddiings into 1st layer of a deep learning NN.
+- No need for embeddings size compatibility, because we concatanete [batch_size x emb1_size + emb2_size]
+- NN is a flexible model, we can add other things into NN, while dot-product is more tailored.
+
+### 1.6 Decision Trees & Paddy Comp (rice disease)
 
 #### Paddy Competition
 [Paddy Doctor: Paddy Disease Classification](https://www.kaggle.com/competitions/paddy-disease-classification/overview)
