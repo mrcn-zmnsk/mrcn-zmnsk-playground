@@ -21,7 +21,7 @@ This stabilizes learning and permits higher LR, and random starting parameters. 
 
 ![Activation histogram from healthy training](../docs/fastai-course/1.8%20activation%20histogram.png)
 
-### 1.7 Collaborative filtering
+### 1.7.1 Collaborative filtering
 [Jupyter](1.7/collaborative_filtering.ipynb)
 
 - Prepared the MovieLense dataset (reviews), in small 100k version
@@ -38,6 +38,29 @@ This stabilizes learning and permits higher LR, and random starting parameters. 
 - Instead of dot-product on factors, we can just chuck embeddiings into 1st layer of a deep learning NN.
 - No need for embeddings size compatibility, because we concatanete [batch_size x emb1_size + emb2_size]
 - NN is a flexible model, we can add other things into NN, while dot-product is more tailored.
+
+### 1.7.2 Tabular analysis recipe
+
+[Jupyter](1.7/tabluar.ipynb)
+
+- Deep dive into tabular data modeling with Heavy Equipment actions dataset 'bluebook-for-bulldozers'
+- Leveraging `TabularPandas` for common cleaning steps on data - determining categorical and continuous data, turning categorical data into Category type, extrapolating missing values (with annotation where extrapolated).
+- Leveraging single tre with `dtreeviz` for comprehending key data insights
+- Trimming features with `importances` and `column clustering`
+- Interpreting prediction contributions with `treeinterpreter` and `waterfall` diagram
+- Trees are unable to interpolate data outside training range !
+- Neural Net approach
+
+| Approach        | Training Loss | Validation Loss | Out-of-bag prediction | Notes |
+|-----------------|----------------|------------------|---|---|
+| Single tree     | 0.2117         | 0.2688   | | |
+| Random forrest     | 0.1710         | 0.2331   | 0.2109 | Improved prediction performance |
+| Random forrest with trimmed features| 0.1833 | 0.2327 | 0.2159 | Minimal performance degradation for smaller, simpler to undertand tree |
+| NeuralNet |   | 0.2294 | | The model can extrapolate, but isn't oob superior to domain model |
+
+![Running data through decision tree with dtreeviz](../docs/fastai-course/1.7%20following%20single%20tree%20with%20dtreeviz.png)
+
+![Running data through decision tree with dtreeviz](../docs/fastai-course/1.7%20interpreting%20prediction.png)
 
 ### 1.6 Decision Trees & Paddy Comp (rice disease)
 
