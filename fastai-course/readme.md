@@ -4,6 +4,31 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
+### 2.2 Pytorch practice
+[Jupyter](2.3/pytorch_code.ipynb)
+
+The notebook is a practice in matrix multiplication and broadcasting.
+Implementing k-means algorithm in Pytorch friendly matrix multiplication - e.g. calculating all distances in 1 invocation.
+Example of cross-product, every point with every centroid [K, D] x [N, D] can be made possible by cross-product of K and N, [K, 1, D] x [1, N, D] -> [K, N, D].
+
+Take-aways: got little hung up on non deterministic results, but this is a greedy algorithm with random init for a NP-hard problem.
+
+### 2.1 Stable diffusion
+[Jupyter](2.1/Stable%20Diffusion%20Deep%20Dive.ipynb)
+
+Following stable diffusion deep dive:
+ - CLIP embeddings - aligning embeddings of text description and images
+ - unet - a denoising deep neural net
+ - VAE - encoder/decoder compressing size and accelerating inference
+ - (De)noise schedule
+
+Foreach step in schedule:
+1. Take pure noise (imggen), or starting image (img2img)
+1. Run unet removing little bit of noise, according to schedule, 2 outputs: with and without target embedding
+1. Take a weighted sum of outputs (high weight to guided)
+1. Go back to (2)
+
+
 ### 1.8 Convoluted NN
 [Jupyter](1.8/convolutions.ipynb)
 MNIST dataset and digits recognition.
