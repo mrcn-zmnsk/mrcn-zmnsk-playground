@@ -4,6 +4,27 @@ This project is built along taking the [FastAI Course](https://course.fast.ai/).
 
 ## Chapters
 
+### 2.16 Building an experimentation framework
+[Jupyter](2.16/learner_framework.ipynb)
+
+This notebook focuses mostly on patterns around building an experimentation workflow using PyTorch primitives. Fundamental design and programming ideas:
+
+- Dependency Injection and Visitor design pattern. Core learning loop is extensible with use of the Visitor design pattern.
+- Working with the model and the trainer as stateful objects, with mutations during epochs e.g. Learning Rate adjustments.
+- Collecting training metrics with `TorchEval`.
+- Progress indicators using dynamically updated: `tqdm` bars, `mathplolib`, and Pandas frames.
+- Ways of looking inside the model to recognize and stabilize training instabilities.
+- Working with PyTorch'es dataset and dataloader abstractions.
+
+![Progress measuring tools](../docs/fastai-course/2.16%20Progress.png)
+
+ML learnings:
+- CNN model for MNIST fashion dataset - 10 classes of clothing items - 89% accuracy.
+- Layer normalization to keep matrix multiplication results in reasonable ranges.
+- SGD optimization, ADAM = Momentum + RMSProp
+- LR decrease using Cosine Annealing schedule.
+
+
 ### 2.2 Pytorch practice
 [Jupyter](2.3/pytorch_code.ipynb)
 
